@@ -8,8 +8,9 @@ struct job{
 	int work;// thoi gian sua
 	int end;// thoi diem ban giao
 };
-vector <job> JOB;//vector sua chua nhap tu file
-vector <int> kq;// vector thu tu sua chua
+vector <job> JOB;// vector sua chua nhap tu file
+vector <int> stt;// vector thu tu sua chua
+vector <int> qh;// vector cac oto qua han
 vector <job> KQ;// vector ket qua
 ifstream fi("job.in");
 ofstream fo("job.out");
@@ -75,33 +76,36 @@ void ChoseJob(){
 	int kt=0;
 	tre=0;
 	t=JOB[0].work;
-	kq.push_back(JOB[0].no);
+	stt.push_back(JOB[0].no);
 	for(int i=1;i<n;i++)
 		if((t+JOB[i].work)<=JOB[i].end)// thoi gian sua cac oto truoc + thoi gian sua oto hien tai <= thoi diem ban giao
 		{
 			t+=JOB[i].work;
-			kq.push_back(JOB[i].no);// dua vao vector thu tu sua chua
+			stt.push_back(JOB[i].no);// dua vao vector thu tu sua chua
 		}
-	tre=n-kq.size();// tinh so oto bi qua han
+	tre=n-stt.size();// tinh so oto bi qua han
 	//dua cac oto con lai vao vector thu tu
 	for(int i=1;i<=n;i++){
-		for(int j=0;j<kq.size();j++)
-			if(i==kq[j])
+		for(int j=0;j<stt.size();j++)
+			if(i==stt[j])
 				kt=1;
-		if(kt==0)
-			kq.push_back(i);
+		if(kt==0){
+			stt.push_back(i);
+			qh.push_back(i);
+		}
 		kt=0;			
 	}
+		
 	//dua vao vector thu tu, lay cac oto theo thu tu cho vao vector ket qua
 	for(int i=0;i<n;i++)
 		for(int j=0;j<n;j++)
-			if(kq[i]==JOB[j].no)// thu tu = so thu tu oto
+			if(stt[i]==JOB[j].no)// thu tu = so thu tu oto
 				KQ.push_back(JOB[j]);
 }
 void XuatFile(){
 	fo<<"Thu tu oto sua chua:"<<endl;
 	for(int i=0;i<n;i++)
-		fo<<kq[i]<<"\t";
+		fo<<stt[i]<<"\t";
 	fo<<endl;
 	fo<<"Ket qua:"<<endl;
 	fo<<"-----------------------------------------"<<endl;
@@ -120,6 +124,9 @@ void XuatFile(){
 	fo<<"|"<<endl;
 	fo<<"-----------------------------------------";
 	fo<<endl<<"So oto bi qua han: "<<tre;
+	fo<<endl<<"Cac oto qua han: ";
+	for(int i=0;i<qh.size();i++)
+		fo<<qh[i]<<" ";
 }
 int main(){
 	DocFile();
@@ -134,7 +141,10 @@ int main(){
 	XuatFile();
 	cout<<endl<<"Thu tu oto sua chua: "<<endl;
 	for(int i=0;i<n;i++)
-		cout<<kq[i]<<"\t";
+		cout<<stt[i]<<"\t";
 	cout<<endl<<"So oto bi qua han: "<<tre;
+	cout<<endl<<"Cac oto qua han: ";
+	for(int i=0;i<qh.size();i++)
+		cout<<qh[i]<<" ";
 	
 }
