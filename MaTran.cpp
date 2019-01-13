@@ -12,6 +12,8 @@ int B[max][max]={0};
 int C[max][max]={0};
 int D[max][max]={0};
 int n,m,p,lc;
+int lan=0;
+// nhap ma tran de tinh tong hieu
 void NhapMaTranTH(int m,int n){
 	cout<<"Nhap ma tran A:"<<endl;
 	for(int i = 0; i<m ; i++)
@@ -26,6 +28,7 @@ void NhapMaTranTH(int m,int n){
       		cin>>B[i][j];
    		}
 }
+// nhap ma tran de tinh tich
 void NhapMaTranTich(int m,int n,int p){
 	int i, j;
 	cout<<"Nhap ma tran A:"<<endl;
@@ -41,6 +44,7 @@ void NhapMaTranTich(int m,int n,int p){
         cin >> B[i][j];
     }
 }
+// xuat file ma tran
 void XuatFile1(int a[max][max],int m, int n){
 	for(int i = 0; i<m ; i++){
    		for(int j = 0; j<n ; j++)
@@ -48,6 +52,7 @@ void XuatFile1(int a[max][max],int m, int n){
 		fo<<endl;
     }
 }
+// xuat file ket qua
 void XuatFile2(int a[max][max],int m, int n){
 	for(int i = 0; i<m ; i++){
    		for(int j = 0; j<n ; j++)
@@ -55,6 +60,7 @@ void XuatFile2(int a[max][max],int m, int n){
 		fkq<<endl;
     }
 }
+// xuat ma tran ra man hinh
 void XuatMaTran(int a[max][max],int m, int n){
 	for(int i = 0; i<m ; i++){
    		for(int j = 0; j<n ; j++)
@@ -62,16 +68,19 @@ void XuatMaTran(int a[max][max],int m, int n){
 		cout<<endl;
     }
 }
+// tinh tong 2 ma tran
 void TongMaTran(){
 	for(int i = 0; i<m ; i++)
    		for(int j = 0; j<n ; j++)
    			C[i][j]=A[i][j]+B[i][j];
 }
+// tinh hieu 2 ma tran
 void HieuMaTran(){
 	for(int i = 0; i<n ; i++)
    		for(int j = 0; j<n ; j++)
    			C[i][j]=A[i][j]-B[i][j];
 }
+// tinh tich 2 ma tran
 void TichMaTran(){
     for(int i = 0; i<m; i++)
 	  	for(int k = 0; k<p; k++) {
@@ -80,6 +89,7 @@ void TichMaTran(){
 	   			C[i][k] = C[i][k]+A[i][j]*B[j][k];
 		}
 }
+// hien thi menu
 void Menu(){
 	cout<<"         MENU"<<endl;
 	cout<<"1: Tinh tong 2 ma tran"<<endl;
@@ -89,8 +99,10 @@ void Menu(){
 	cout<<"Nhap lua chon cua ban: "<<endl;
 	cin>>lc;
 }
+// chon menu
 int MenuOption(){
 	int kt;
+	lan++;
 	Menu();
 	switch (lc){
 		case 1:{
@@ -103,6 +115,7 @@ int MenuOption(){
 			system("cls");
 			cout<<"Ma tran A:"<<endl;
 			XuatMaTran(A,m,n);
+			fo<<"Nhap lan thu "<<lan<<endl;
 			fo<<"Ma tran A:"<<endl;
 			XuatFile1(A,m,n);
 			cout<<"Ma tran B:"<<endl;
@@ -112,6 +125,7 @@ int MenuOption(){
 			TongMaTran();
 			cout<<"Tong 2 ma tran:"<<endl;
 			XuatMaTran(C,m,n);
+			fkq<<"Xuat lan thu "<<lan<<endl;
 			fkq<<"Tong 2 ma tran:"<<endl;
 			XuatFile2(C,m,n);
 			cout<<"Ban co muon tiep tuc khong?"<<endl;
@@ -133,6 +147,7 @@ int MenuOption(){
 			system("cls");
 			cout<<"Ma tran A:"<<endl;
 			XuatMaTran(A,m,n);
+			fo<<"Nhap lan thu "<<lan<<endl;
 			fo<<"Ma tran A:"<<endl;
 			XuatFile1(A,m,n);
 			cout<<"Ma tran B:"<<endl;
@@ -142,6 +157,7 @@ int MenuOption(){
 			HieuMaTran();
 			cout<<"Hieu 2 ma tran:"<<endl;
 			XuatMaTran(C,m,n);
+			fkq<<"Xuat lan thu "<<lan<<endl;
 			fkq<<"Hieu 2 ma tran:"<<endl;
 			XuatFile2(C,m,n);
 			cout<<"Ban co muon tiep tuc khong?"<<endl;
@@ -165,15 +181,17 @@ int MenuOption(){
 			system("cls");
 			cout<<"Ma tran A:"<<endl;
 			XuatMaTran(A,m,n);
+			fo<<"Nhap lan thu "<<lan<<endl;
 			fo<<"Ma tran A:"<<endl;
 			XuatFile1(A,m,n);
 			cout<<"Ma tran B:"<<endl;
-			XuatMaTran(B,m,n);
+			XuatMaTran(B,n,p);
 			fo<<"Ma tran B:"<<endl;
-			XuatFile1(B,m,n);
+			XuatFile1(B,n,p);
 			TichMaTran();
 			cout<<"Tich 2 ma tran:"<<endl;
 			XuatMaTran(C,m,p);
+			fkq<<"Xuat lan thu "<<lan<<endl;
 			fkq<<"Tich 2 ma tran:"<<endl;
 			XuatFile2(C,m,p);
 			cout<<"Ban co muon tiep tuc khong?"<<endl;
@@ -188,7 +206,15 @@ int MenuOption(){
 		case 0:{
 			break;
 		}
+		default:{
+			system("cls");
+			cout<<"Nhap sai!!"<<endl;
+			cout<<"Moi nhap lai:"<<endl;
+			MenuOption();
+			break;
+		}
 	}
+	
 }
 int main(){
 	MenuOption();

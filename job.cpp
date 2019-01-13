@@ -36,39 +36,45 @@ void SapXep(){
 }
 //Xuat bang sua chua
 void Xuat(){
-	cout<<"-----------------------------------------"<<endl;
+	cout<<"-------------------------------------------------"<<endl;
+	cout<<"| no\t";
 	for(int i=0;i<n;i++)
-		cout<<"|"<<JOB[i].no<<"\t";
+		cout<<"| "<<JOB[i].no<<"\t";
 	cout<<"|"<<endl;
-	cout<<"-----------------------------------------";
+	cout<<"-------------------------------------------------";
 	cout<<endl;
+	cout<<"| time\t";
 	for(int i=0;i<n;i++)
-		cout<<"|"<<JOB[i].work<<"\t";
+		cout<<"| "<<JOB[i].work<<"\t";
 	cout<<"|"<<endl;
-	cout<<"-----------------------------------------";
+	cout<<"-------------------------------------------------";
 	cout<<endl;
+	cout<<"| end\t";
 	for(int i=0;i<n;i++)
-		cout<<"|"<<JOB[i].end<<"\t";
+		cout<<"| "<<JOB[i].end<<"\t";
 	cout<<"|"<<endl;
-	cout<<"-----------------------------------------";
+	cout<<"-------------------------------------------------";
 }
 //Xuat bang phan cong sua chua
 void XuatKQ(){
-	cout<<"-----------------------------------------"<<endl;
+	cout<<"-------------------------------------------------"<<endl;
+	cout<<"| no\t";
 	for(int i=0;i<n;i++)
-		cout<<"|"<<KQ[i].no<<"\t";
+		cout<<"| "<<KQ[i].no<<"\t";
 	cout<<"|"<<endl;
-	cout<<"-----------------------------------------";
+	cout<<"-------------------------------------------------";
 	cout<<endl;
+	cout<<"| time\t";
 	for(int i=0;i<n;i++)
-		cout<<"|"<<KQ[i].work<<"\t";
+		cout<<"| "<<KQ[i].work<<"\t";
 	cout<<"|"<<endl;
-	cout<<"-----------------------------------------";
+	cout<<"-------------------------------------------------";
 	cout<<endl;
+	cout<<"| end\t";
 	for(int i=0;i<n;i++)
-		cout<<"|"<<KQ[i].end<<"\t";
+		cout<<"| "<<KQ[i].end<<"\t";
 	cout<<"|"<<endl;
-	cout<<"-----------------------------------------";
+	cout<<"-------------------------------------------------";
 }
 //Chon oto sua chua theo thu tu tot nhat cho vao vector
 void ChoseJob(){
@@ -108,25 +114,31 @@ void XuatFile(){
 		fo<<stt[i]<<"\t";
 	fo<<endl;
 	fo<<"Ket qua:"<<endl;
-	fo<<"-----------------------------------------"<<endl;
+	fo<<"-------------------------------------------------"<<endl;
+	fo<<"| no\t";
 	for(int i=0;i<n;i++)
-		fo<<"|"<<KQ[i].no<<"\t";
+		fo<<"| "<<KQ[i].no<<"\t";
 	fo<<"|"<<endl;
-	fo<<"-----------------------------------------";
+	fo<<"-------------------------------------------------";
 	fo<<endl;
+	fo<<"| time\t";
 	for(int i=0;i<n;i++)
-		fo<<"|"<<KQ[i].work<<"\t";
+		fo<<"| "<<KQ[i].work<<"\t";
 	fo<<"|"<<endl;
-	fo<<"-----------------------------------------";
+	fo<<"-------------------------------------------------";
 	fo<<endl;
+	fo<<"| end\t";
 	for(int i=0;i<n;i++)
-		fo<<"|"<<KQ[i].end<<"\t";
+		fo<<"| "<<KQ[i].end<<"\t";
 	fo<<"|"<<endl;
-	fo<<"-----------------------------------------";
+	fo<<"-------------------------------------------------";
 	fo<<endl<<"So oto bi qua han: "<<tre;
 	fo<<endl<<"Cac oto qua han: ";
-	for(int i=0;i<qh.size();i++)
-		fo<<qh[i]<<" ";
+	if(qh.size()==0)
+		fo<<"Khong co oto qua han";
+	else
+		for(int i=0;i<qh.size();i++)
+			fo<<qh[i]<<" ";
 }
 int main(){
 	DocFile();
@@ -144,7 +156,10 @@ int main(){
 		cout<<stt[i]<<"\t";
 	cout<<endl<<"So oto bi qua han: "<<tre;
 	cout<<endl<<"Cac oto qua han: ";
-	for(int i=0;i<qh.size();i++)
-		cout<<qh[i]<<" ";
+	if(qh.size()==0)
+		cout<<"Khong co!";
+	else
+		for(int i=0;i<qh.size();i++)
+			cout<<qh[i]<<" ";
 	
 }
